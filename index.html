@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Abdul Rehman Butt – Electrical Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0A2137;
+  --navy2:#0D2B45;
+  --teal:#0A9396;
+  --teal2:#0E7C7B;
+  --teal-glow:rgba(10,147,150,0.18);
+  --teal-light:#E8F4F4;
+  --white:#FFFFFF;
+  --off:#F8FAFB;
+  --off2:#F0F5F7;
+  --border:#D5E5EA;
+  --text:#1A2B38;
+  --mid:#4A6070;
+  --light:#7A95A5;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --shadow:0 4px 24px rgba(10,33,55,0.08);
+  --shadow-lg:0 12px 48px rgba(10,33,55,0.12);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);color:var(--text);background:var(--white);line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:var(--teal);color:#fff}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--off)}
+::-webkit-scrollbar-thumb{background:var(--teal);border-radius:2px}
+
+/* ── NAV ── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 4rem;
+  background:rgba(255,255,255,0);
+  transition:background .4s,box-shadow .4s,backdrop-filter .4s;
+}
+#nav.scrolled{
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(16px);
+  box-shadow:0 1px 0 var(--border);
+}
+.nav-logo{
+  font-family:var(--serif);font-size:1.2rem;font-weight:700;
+  color:var(--white);letter-spacing:0.02em;
+  transition:color .4s;
+}
+#nav.scrolled .nav-logo{color:var(--navy)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{
+  font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(255,255,255,0.85);transition:color .3s;position:relative;
+}
+#nav.scrolled .nav-links a{color:var(--mid)}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;
+  background:var(--teal);transition:width .3s;
+}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a:hover{color:var(--teal)}
+#nav.scrolled .nav-links a:hover{color:var(--teal)}
+
+/* ── SPLASH / HERO ── */
+#splash{
+  min-height:100vh;
+  background:var(--navy);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  padding:120px 2rem 80px;
+}
+
+/* Circuit grid background */
+.circuit-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(10,147,150,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(10,147,150,0.07) 1px,transparent 1px);
+  background-size:60px 60px;
+  animation:gridPulse 8s ease-in-out infinite;
+}
+@keyframes gridPulse{0%,100%{opacity:0.4}50%{opacity:1}}
+
+/* Radial glow */
+.splash-glow{
+  position:absolute;
+  width:700px;height:700px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(10,147,150,0.14) 0%,transparent 70%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  animation:glowPulse 6s ease-in-out infinite;
+}
+@keyframes glowPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.1)}}
+
+.splash-inner{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr auto;
+  gap:5rem;align-items:center;
+  max-width:1200px;width:100%;
+}
+
+/* Name reveal animation */
+.splash-eyebrow{
+  font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:1rem;
+  opacity:0;animation:fadeUp .6s ease forwards .2s;
+}
+.splash-eyebrow::before{content:'';width:32px;height:1.5px;background:var(--teal)}
+.splash-name{
+  font-family:var(--serif);
+  font-size:clamp(3rem,7vw,6rem);
+  font-weight:900;color:var(--white);
+  line-height:1.0;letter-spacing:-0.02em;
+  margin-bottom:0.4rem;
+  opacity:0;animation:fadeUp .8s ease forwards .4s;
+}
+.splash-name span{color:var(--teal)}
+.splash-divider{
+  width:0;height:2px;
+  background:linear-gradient(90deg,var(--teal),rgba(10,147,150,0));
+  margin:1.8rem 0;
+  animation:lineGrow 1s ease forwards .9s;
+}
+@keyframes lineGrow{to{width:320px}}
+.splash-title{
+  font-size:1.1rem;font-weight:300;color:rgba(255,255,255,0.75);
+  margin-bottom:0.6rem;letter-spacing:0.02em;
+  opacity:0;animation:fadeUp .8s ease forwards .7s;
+}
+.splash-title strong{color:var(--white);font-weight:600}
+.splash-sub{
+  font-size:0.88rem;color:rgba(255,255,255,0.5);
+  margin-bottom:2.5rem;
+  opacity:0;animation:fadeUp .8s ease forwards .9s;
+}
+.splash-badges{
+  display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:2.5rem;
+  opacity:0;animation:fadeUp .8s ease forwards 1.1s;
+}
+.splash-badge{
+  font-size:0.72rem;font-weight:600;letter-spacing:0.06em;
+  color:rgba(255,255,255,0.9);
+  border:1px solid rgba(10,147,150,0.5);
+  background:rgba(10,147,150,0.1);
+  padding:5px 14px;border-radius:20px;
+}
+.splash-cta{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .8s ease forwards 1.3s;
+}
+.btn-teal{
+  background:var(--teal);color:#fff;
+  padding:14px 32px;border-radius:6px;
+  font-size:0.88rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  transition:all .25s;box-shadow:0 4px 20px rgba(10,147,150,0.35);
+}
+.btn-teal:hover{background:#0A9396cc;transform:translateY(-2px);box-shadow:0 8px 30px rgba(10,147,150,0.45)}
+.btn-ghost{
+  border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);
+  padding:13px 32px;border-radius:6px;
+  font-size:0.88rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  transition:all .25s;
+}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+
+/* Photo */
+.splash-photo{
+  opacity:0;animation:fadeIn .8s ease forwards 1s;
+  position:relative;
+}
+.photo-ring{
+  width:300px;height:300px;border-radius:50%;
+  border:2px solid rgba(10,147,150,0.4);
+  padding:8px;
+  box-shadow:0 0 0 1px rgba(10,147,150,0.2),0 0 60px rgba(10,147,150,0.2),inset 0 0 60px rgba(10,147,150,0.04);
+}
+.photo-inner{
+  width:100%;height:100%;border-radius:50%;overflow:hidden;
+  background:rgba(10,147,150,0.08);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.photo-inner img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.photo-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:0.75rem;color:rgba(10,147,150,0.6);text-align:center;padding:1.5rem;
+}
+.photo-placeholder svg{width:56px;height:56px}
+.photo-placeholder p{font-size:0.72rem;line-height:1.4;color:rgba(255,255,255,0.35)}
+.photo-tag{
+  position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);
+  background:var(--teal);color:#fff;
+  font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  padding:5px 16px;border-radius:20px;white-space:nowrap;
+  box-shadow:0 4px 16px rgba(10,147,150,0.4);
+}
+
+/* Socials */
+.splash-socials{
+  display:flex;gap:1.25rem;margin-top:2.5rem;align-items:center;
+  opacity:0;animation:fadeUp .8s ease forwards 1.5s;
+}
+.soc-link{
+  width:38px;height:38px;border-radius:50%;
+  border:1px solid rgba(255,255,255,0.15);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,0.6);transition:all .25s;
+}
+.soc-link:hover{border-color:var(--teal);color:var(--teal);background:rgba(10,147,150,0.1)}
+.soc-link svg{width:16px;height:16px}
+
+/* Scroll indicator */
+.scroll-hint{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:rgba(255,255,255,0.3);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;
+  opacity:0;animation:fadeIn 1s ease forwards 2s;
+}
+.scroll-hint-line{
+  width:1.5px;height:40px;background:linear-gradient(to bottom,rgba(10,147,150,0.8),transparent);
+  animation:scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(0.7)}}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ── SECTION BASE ── */
+section{padding:96px 4rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.sec-eyebrow{
+  font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:0.7rem;
+  display:flex;align-items:center;gap:0.75rem;
+}
+.sec-eyebrow::before{content:'';width:24px;height:1.5px;background:var(--teal)}
+.sec-heading{
+  font-family:var(--serif);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;
+  color:var(--navy);line-height:1.1;margin-bottom:1rem;
+}
+.sec-lead{font-size:1rem;color:var(--mid);max-width:560px;line-height:1.75;margin-bottom:3rem}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+/* ── ABOUT ── */
+#about{background:var(--off)}
+.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.about-text p{font-size:0.95rem;color:var(--mid);margin-bottom:1.1rem;line-height:1.8}
+.about-text p strong{color:var(--navy);font-weight:600}
+.about-stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;
+}
+.stat-box{
+  background:var(--white);border:1px solid var(--border);border-radius:12px;
+  padding:1.5rem;text-align:center;
+  transition:box-shadow .25s,transform .25s;
+}
+.stat-box:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.stat-n{
+  font-family:var(--serif);font-size:2.4rem;color:var(--teal);
+  font-weight:700;line-height:1;margin-bottom:6px;
+}
+.stat-unit{font-size:1rem;color:var(--teal)}
+.stat-l{font-size:0.75rem;font-weight:600;color:var(--light);text-transform:uppercase;letter-spacing:0.06em}
+
+.about-details{display:flex;flex-direction:column;gap:1.1rem}
+.detail-row{
+  display:flex;gap:1rem;align-items:flex-start;
+  padding:1rem 1.25rem;
+  background:var(--white);border:1px solid var(--border);border-radius:10px;
+  transition:border-color .25s;
+}
+.detail-row:hover{border-color:var(--teal)}
+.detail-icon{
+  width:38px;height:38px;border-radius:8px;
+  background:var(--teal-light);display:flex;align-items:center;justify-content:center;
+  color:var(--teal);font-size:1rem;flex-shrink:0;
+}
+.detail-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--light);margin-bottom:3px}
+.detail-val{font-size:0.88rem;color:var(--text);font-weight:500}
+
+/* ── EXPERIENCE ── */
+#experience{background:var(--white)}
+.exp-grid{display:grid;grid-template-columns:280px 1fr;gap:4rem;align-items:start}
+.exp-nav{position:sticky;top:88px}
+.exp-nav-item{
+  display:flex;flex-direction:column;gap:4px;
+  padding:1rem 1.25rem;border-radius:10px;
+  cursor:pointer;transition:background .2s;
+  border-left:2px solid transparent;margin-bottom:0.5rem;
+}
+.exp-nav-item.active,.exp-nav-item:hover{background:var(--off);border-left-color:var(--teal)}
+.exp-nav-date{font-size:0.7rem;font-weight:600;color:var(--teal);letter-spacing:0.06em;text-transform:uppercase}
+.exp-nav-title{font-size:0.9rem;font-weight:700;color:var(--navy)}
+.exp-nav-org{font-size:0.78rem;color:var(--mid)}
+.exp-details{display:flex;flex-direction:column;gap:2.5rem}
+.exp-card{
+  background:var(--off);border:1px solid var(--border);border-radius:16px;
+  padding:2rem;transition:box-shadow .25s;
+}
+.exp-card:hover{box-shadow:var(--shadow-lg)}
+.exp-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;flex-wrap:wrap;gap:0.5rem}
+.exp-card-title{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--navy)}
+.exp-card-date{
+  font-size:0.72rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;
+  color:var(--white);background:var(--teal);padding:4px 12px;border-radius:20px;
+}
+.exp-card-org{font-size:0.88rem;color:var(--mid);margin-bottom:0.4rem}
+.exp-card-loc{font-size:0.78rem;color:var(--light);margin-bottom:1.25rem;display:flex;align-items:center;gap:4px}
+.exp-card-loc::before{content:'📍';font-size:0.7rem}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.exp-bullets li{
+  font-size:0.88rem;color:var(--mid);padding-left:1.25rem;
+  position:relative;line-height:1.65;
+}
+.exp-bullets li::before{
+  content:'';position:absolute;left:0;top:9px;
+  width:6px;height:6px;border-radius:50%;background:var(--teal);
+}
+.exp-tag-row{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border)}
+.exp-tag{font-size:0.7rem;font-weight:600;color:var(--teal);background:var(--teal-light);padding:3px 10px;border-radius:20px}
+
+/* ── PROJECTS ── */
+#projects{background:var(--off)}
+.projects-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+.proj-filter{display:flex;gap:0.5rem;flex-wrap:wrap}
+.filter-btn{
+  font-size:0.75rem;font-weight:600;padding:6px 16px;border-radius:20px;
+  border:1.5px solid var(--border);color:var(--mid);background:var(--white);
+  cursor:pointer;transition:all .2s;
+}
+.filter-btn.active,.filter-btn:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-light)}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.proj-card{
+  background:var(--white);border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .25s,box-shadow .25s;
+}
+.proj-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.proj-card-img{
+  height:180px;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  font-size:3.5rem;position:relative;overflow:hidden;
+}
+.proj-card-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(10,147,150,0.2),transparent);
+}
+.proj-card-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.proj-card-cat{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.5rem}
+.proj-card-title{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:0.6rem;line-height:1.3}
+.proj-card-desc{font-size:0.83rem;color:var(--mid);line-height:1.65;flex:1;margin-bottom:1rem}
+.proj-chips{display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1rem}
+.proj-chip{font-size:0.68rem;font-weight:500;color:var(--mid);background:var(--off2);padding:3px 9px;border-radius:20px;border:1px solid var(--border)}
+.proj-card-footer{display:flex;gap:0.75rem;padding-top:1rem;border-top:1px solid var(--border)}
+.proj-link{
+  font-size:0.75rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;
+  color:var(--teal);display:flex;align-items:center;gap:4px;transition:gap .2s;
+}
+.proj-link:hover{gap:8px}
+
+/* Placeholder card */
+.proj-card.placeholder{
+  border-style:dashed;border-color:var(--border);
+  background:transparent;
+}
+.proj-card.placeholder .proj-card-img{
+  background:var(--off2);font-size:2rem;color:var(--border);
+}
+.proj-card.placeholder .proj-card-title{color:var(--light)}
+.proj-card.placeholder .proj-card-desc{color:var(--border)}
+
+/* ── SKILLS ── */
+#skills{background:var(--white)}
+.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.skill-category{margin-bottom:2.5rem}
+.skill-cat-title{
+  font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--navy);margin-bottom:1.25rem;
+  display:flex;align-items:center;gap:0.75rem;
+}
+.skill-cat-title::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--teal)}
+.skill-items{display:flex;flex-direction:column;gap:0.75rem}
+.skill-item{display:flex;flex-direction:column;gap:6px}
+.skill-item-top{display:flex;justify-content:space-between;align-items:center}
+.skill-item-name{font-size:0.85rem;font-weight:500;color:var(--text)}
+.skill-item-level{font-size:0.7rem;color:var(--light)}
+.skill-bar{height:4px;background:var(--off2);border-radius:2px;overflow:hidden}
+.skill-bar-fill{height:100%;background:linear-gradient(90deg,var(--teal),#0A9396aa);border-radius:2px;width:0;transition:width 1.2s ease}
+
+.skill-tags-section{margin-top:3rem}
+.skill-tags-title{font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);margin-bottom:1rem}
+.skill-cloud{display:flex;flex-wrap:wrap;gap:0.5rem}
+.skill-cloud-tag{
+  font-size:0.8rem;font-weight:500;color:var(--text);
+  background:var(--off);border:1px solid var(--border);
+  padding:6px 14px;border-radius:20px;transition:all .2s;
+}
+.skill-cloud-tag:hover{background:var(--teal-light);border-color:var(--teal);color:var(--teal)}
+
+/* ── EDUCATION ── */
+#education{background:var(--off)}
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.edu-card{
+  background:var(--white);border:1px solid var(--border);border-radius:16px;
+  padding:2rem;transition:box-shadow .25s,transform .25s;
+  display:flex;flex-direction:column;
+}
+.edu-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.edu-icon{
+  width:52px;height:52px;border-radius:12px;
+  background:var(--teal-light);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin-bottom:1.25rem;
+}
+.edu-degree{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;line-height:1.3}
+.edu-inst{font-size:0.85rem;color:var(--teal);font-weight:600;margin-bottom:0.4rem}
+.edu-year{font-size:0.78rem;color:var(--light);margin-bottom:1rem}
+.edu-grade{
+  display:inline-block;font-size:0.75rem;font-weight:700;
+  background:var(--teal-light);color:var(--teal);
+  padding:3px 12px;border-radius:20px;margin-bottom:1rem;
+}
+.edu-note{font-size:0.82rem;color:var(--mid);line-height:1.6;margin-top:auto}
+
+/* ── CERTIFICATIONS ── */
+#certifications{background:var(--white)}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem}
+.cert-card{
+  background:var(--off);border:1px solid var(--border);border-radius:12px;
+  padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;
+  transition:box-shadow .25s,border-color .25s;
+}
+.cert-card:hover{box-shadow:var(--shadow);border-color:var(--teal)}
+.cert-icon{
+  width:44px;height:44px;border-radius:10px;
+  background:var(--teal-light);display:flex;align-items:center;justify-content:center;
+  font-size:1.25rem;flex-shrink:0;
+}
+.cert-name{font-size:0.9rem;font-weight:700;color:var(--navy);margin-bottom:3px}
+.cert-issuer{font-size:0.78rem;color:var(--teal);font-weight:600;margin-bottom:3px}
+.cert-year{font-size:0.72rem;color:var(--light)}
+
+/* ── EXTRACURRICULAR ── */
+#extracurricular{background:var(--off)}
+.extra-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.25rem}
+.extra-card{
+  background:var(--white);border:1px solid var(--border);border-radius:12px;
+  padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;
+  transition:box-shadow .25s,transform .25s;
+}
+.extra-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.extra-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--navy);color:var(--teal);
+  display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;
+}
+.extra-title{font-size:0.92rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.extra-desc{font-size:0.82rem;color:var(--mid);line-height:1.6}
+
+/* ── CONTACT ── */
+#contact{background:var(--navy);position:relative;overflow:hidden}
+.contact-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(10,147,150,0.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(10,147,150,0.06) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+#contact .section-inner{position:relative;z-index:1}
+#contact .sec-eyebrow{color:var(--teal)}
+#contact .sec-heading{color:var(--white)}
+#contact .sec-lead{color:rgba(255,255,255,0.55);max-width:480px}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-cards{display:flex;flex-direction:column;gap:1rem}
+.contact-card{
+  display:flex;align-items:center;gap:1.25rem;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;padding:1.25rem 1.5rem;
+  transition:background .25s,border-color .25s;
+}
+.contact-card:hover{background:rgba(10,147,150,0.12);border-color:rgba(10,147,150,0.35)}
+.contact-card-icon{
+  width:44px;height:44px;border-radius:10px;background:var(--teal);
+  display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;
+}
+.contact-card-label{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:3px}
+.contact-card-val{font-size:0.92rem;font-weight:500;color:var(--white)}
+.contact-right{}
+.available-box{
+  background:rgba(10,147,150,0.1);border:1px solid rgba(10,147,150,0.25);
+  border-radius:16px;padding:2rem;margin-bottom:1.5rem;
+}
+.available-title{
+  font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:1rem;
+}
+.available-list{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.available-list li{
+  font-size:0.88rem;color:rgba(255,255,255,0.75);
+  display:flex;align-items:center;gap:0.75rem;
+}
+.available-list li::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--teal);flex-shrink:0;
+}
+.lang-row{display:flex;flex-direction:column;gap:0.75rem}
+.lang-item{display:flex;justify-content:space-between;align-items:center}
+.lang-name{font-size:0.88rem;font-weight:600;color:rgba(255,255,255,0.8)}
+.lang-level{font-size:0.72rem;color:rgba(255,255,255,0.4)}
+.lang-bar{height:3px;background:rgba(255,255,255,0.08);border-radius:2px;margin-top:4px;overflow:hidden}
+.lang-bar-fill{height:100%;background:var(--teal);border-radius:2px}
+
+/* ── FOOTER ── */
+footer{
+  background:rgba(0,0,0,0.3);border-top:1px solid rgba(255,255,255,0.06);
+  padding:2rem 4rem;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:0.78rem;color:rgba(255,255,255,0.3);
+}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{color:rgba(255,255,255,0.3);transition:color .2s}
+.footer-links a:hover{color:var(--teal)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .projects-grid{grid-template-columns:repeat(2,1fr)}
+  .exp-grid{grid-template-columns:1fr}
+  .exp-nav{display:none}
+}
+@media(max-width:768px){
+  section{padding:64px 1.5rem}
+  #nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .splash-inner{grid-template-columns:1fr;text-align:center}
+  .splash-photo{order:-1}
+  .photo-ring{width:200px;height:200px;margin:0 auto}
+  .splash-badges{justify-content:center}
+  .splash-cta{justify-content:center}
+  .splash-socials{justify-content:center}
+  .splash-divider{margin:1.5rem auto}
+  .splash-eyebrow{justify-content:center}
+  .about-layout,.contact-layout,.skills-layout{grid-template-columns:1fr}
+  .edu-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:1rem;text-align:center;padding:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-logo">A R Butt</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ SPLASH / HERO ═══════════════════════════════════════════ -->
+<section id="splash">
+  <div class="circuit-bg"></div>
+  <div class="splash-glow"></div>
+  <div class="splash-inner">
+    <div>
+      <div class="splash-eyebrow">Electrical Engineer · Pakistan</div>
+      <h1 class="splash-name">Abdul<br>Rehman<br><span>Butt</span></h1>
+      <div class="splash-divider"></div>
+      <p class="splash-title"><strong>Solar PV O&M Specialist</strong> · Embedded Systems Developer</p>
+      <p class="splash-sub">3.2 MW Grid-Connected Plant · Sun-Tracking Systems · IoT & Robotics</p>
+      <div class="splash-badges">
+        <span class="splash-badge">B.Sc EE – UET Lahore</span>
+        <span class="splash-badge">CGPA 3.54</span>
+        <span class="splash-badge">PEEF Scholar</span>
+        <span class="splash-badge">IEEE Technical Head</span>
+        <span class="splash-badge">PAC Kamra Intern</span>
+      </div>
+      <div class="splash-cta">
+        <a href="#contact" class="btn-teal">Get In Touch</a>
+        <a href="#projects" class="btn-ghost">View Projects</a>
+      </div>
+      <div class="splash-socials">
+        <a href="mailto:abdulrehmanarshad246@gmail.com" class="soc-link" title="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/abdulrehman-arshad" target="_blank" class="soc-link" title="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://github.com/abdulrehman-arshad" target="_blank" class="soc-link" title="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="tel:+923227007187" class="soc-link" title="Phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18L6.5 2a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.5 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="splash-photo">
+      <div class="photo-ring">
+        <div class="photo-inner">
+          <!-- REPLACE THIS WITH YOUR PHOTO -->
+          <!-- <img src="photo.jpg" alt="Abdul Rehman Butt"/> -->
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <p>Upload photo.jpg<br>to this folder</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-tag">Open to Opportunities</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-hint-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═════════════════════════════════════════════════ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="sec-eyebrow">Who I Am</p>
+      <h2 class="sec-heading">About Me</h2>
+      <p class="sec-lead">Electrical Engineer with field expertise in solar PV operations and a strong foundation in embedded systems, IoT, and technical education.</p>
+    </div>
+    <div class="about-layout">
+      <div class="reveal reveal-delay-1">
+        <div class="about-text">
+          <p>I am an <strong>Electrical Engineer</strong> from UET Lahore (CGPA 3.54) currently working as an <strong>O&M Engineer at Nizam Energy Pvt. Ltd.</strong>, where I operate and maintain a 3.2 MW grid-connected solar PV plant featuring single-axis sun-tracking systems in Gujranwala, Pakistan.</p>
+          <p>Alongside my O&M role, I am actively <strong>supervising the installation and commissioning of an additional 1 MW solar plant</strong> — coordinating civil and electrical contractors, managing vendors, and overseeing equipment testing and pre-commissioning activities.</p>
+          <p>My background spans both <strong>field engineering and academia</strong> — I previously served as an Electrical Technology Instructor at GCT Gujranwala. I am also deeply interested in embedded systems, IoT, and robotics, with multiple engineering projects developed during my university years.</p>
+          <p>I was competitively selected as a <strong>PEEF Scholar</strong> and served as <strong>IEEE Student Branch Technical Head</strong> at UET Lahore, Narowal Campus.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-box reveal reveal-delay-1">
+            <div class="stat-n">3.2<span class="stat-unit">MW</span></div>
+            <div class="stat-l">Plant Under O&M</div>
+          </div>
+          <div class="stat-box reveal reveal-delay-2">
+            <div class="stat-n">1<span class="stat-unit">MW</span></div>
+            <div class="stat-l">Plant Under Installation</div>
+          </div>
+          <div class="stat-box reveal reveal-delay-3">
+            <div class="stat-n">3.54</div>
+            <div class="stat-l">CGPA – UET Lahore</div>
+          </div>
+          <div class="stat-box reveal reveal-delay-4">
+            <div class="stat-n">6+</div>
+            <div class="stat-l">Engineering Projects</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-details reveal reveal-delay-2">
+        <div class="detail-row">
+          <div class="detail-icon">📍</div>
+          <div><div class="detail-label">Location</div><div class="detail-val">Wazirabad, Gujranwala, Punjab, Pakistan</div></div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">🎓</div>
+          <div><div class="detail-label">Degree</div><div class="detail-val">B.Sc Electrical Engineering – UET Lahore, Narowal Campus</div></div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">⚡</div>
+          <div><div class="detail-label">Current Role</div><div class="detail-val">O&M Engineer – Nizam Energy Pvt. Ltd.</div></div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">🏆</div>
+          <div><div class="detail-label">Honors</div><div class="detail-val">PEEF Scholar · IEEE Technical Head · PAC Kamra Intern</div></div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">💼</div>
+          <div><div class="detail-label">Experience</div><div class="detail-val">Solar PV O&M, Technical Education, Embedded Systems</div></div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">🌍</div>
+          <div><div class="detail-label">Languages</div><div class="detail-val">Urdu (Native) · English (Professional) · Chinese (Basic)</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═══════════════════════════════════════════ -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="sec-eyebrow">Career</p>
+      <h2 class="sec-heading">Work Experience</h2>
+      <p class="sec-lead">From teaching electrical technology to operating utility-scale solar plants — a career built on hands-on expertise.</p>
+    </div>
+    <div class="exp-details">
+
+      <div class="exp-card reveal reveal-delay-1">
+        <div class="exp-card-top">
+          <div>
+            <div class="exp-card-title">O&M Engineer</div>
+            <div class="exp-card-org">Nizam Energy Pvt. Ltd.</div>
+            <div class="exp-card-loc">Gujranwala, Pakistan</div>
+          </div>
+          <div class="exp-card-date">Mar 2025 – Present</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Operate and maintain a 3.2 MW grid-connected solar PV plant with single-axis sun-tracking systems on a daily basis</li>
+          <li>Perform inverter troubleshooting and fault resolution to minimize downtime and maximize energy yield</li>
+          <li>Conduct tracker motor maintenance and alignment checks to ensure optimal sun-tracking performance across all arrays</li>
+          <li>Monitor plant performance via SCADA-based system; compile and submit daily, weekly, and monthly reports</li>
+          <li>Execute HV/LV switchgear operations in strict compliance with PTW and LOTO safety protocols</li>
+          <li>Coordinate with grid operators and OEM teams for audits, warranty repairs, and performance optimization</li>
+          <li>Supervising installation and commissioning of an additional 1 MW solar PV plant — coordinating contractors, vendors, and pre-commissioning checks</li>
+        </ul>
+        <div class="exp-tag-row">
+          <span class="exp-tag">Solar PV O&M</span>
+          <span class="exp-tag">Sun-Tracking</span>
+          <span class="exp-tag">Inverter Maintenance</span>
+          <span class="exp-tag">SCADA</span>
+          <span class="exp-tag">HV/LV Systems</span>
+          <span class="exp-tag">PTW/LOTO</span>
+          <span class="exp-tag">Plant Commissioning</span>
+        </div>
+      </div>
+
+      <div class="exp-card reveal reveal-delay-2">
+        <div class="exp-card-top">
+          <div>
+            <div class="exp-card-title">Electrical Technology Instructor</div>
+            <div class="exp-card-org">Govt. College of Technology (GCT) Gujranwala</div>
+            <div class="exp-card-loc">Gujranwala, Pakistan</div>
+          </div>
+          <div class="exp-card-date">Sep 2024 – Feb 2025</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Delivered electrical technology courses with emphasis on practical, industry-relevant skills aligned with PBTE curriculum</li>
+          <li>Conducted hands-on training in electrical machines, circuit analysis, power systems, and safety practices</li>
+          <li>Prepared lesson plans, lab exercises, and student assessments for applied engineering competency</li>
+        </ul>
+        <div class="exp-tag-row">
+          <span class="exp-tag">Technical Education</span>
+          <span class="exp-tag">PBTE Curriculum</span>
+          <span class="exp-tag">Electrical Machines</span>
+          <span class="exp-tag">Lab Training</span>
+        </div>
+      </div>
+
+      <div class="exp-card reveal reveal-delay-3">
+        <div class="exp-card-top">
+          <div>
+            <div class="exp-card-title">Engineering Intern</div>
+            <div class="exp-card-org">APF – Pakistan Aeronautical Complex (PAC) Kamra</div>
+            <div class="exp-card-loc">Kamra, Pakistan · 2 Weeks</div>
+          </div>
+          <div class="exp-card-date">May – Jun 2023</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Gained exposure to aircraft manufacturing processes and precision avionics systems at Pakistan's premier aerospace & defense facility</li>
+          <li>Observed high-precision electrical and electronic systems in a defense-grade industrial environment</li>
+        </ul>
+        <div class="exp-tag-row">
+          <span class="exp-tag">Aerospace</span>
+          <span class="exp-tag">Avionics</span>
+          <span class="exp-tag">Defense Systems</span>
+        </div>
+      </div>
+
+      <div class="exp-card reveal reveal-delay-4">
+        <div class="exp-card-top">
+          <div>
+            <div class="exp-card-title">AutoCAD Instructor</div>
+            <div class="exp-card-org">IOAP College Wazirabad</div>
+            <div class="exp-card-loc">Wazirabad, Pakistan</div>
+          </div>
+          <div class="exp-card-date">2016 – 2017</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Taught AutoCAD 2D & 3D drafting from beginner to intermediate level with hands-on practical sessions</li>
+          <li>Designed course material and conducted lab exercises for engineering drawing applications</li>
+        </ul>
+        <div class="exp-tag-row">
+          <span class="exp-tag">AutoCAD 2D & 3D</span>
+          <span class="exp-tag">Engineering Drawing</span>
+          <span class="exp-tag">Technical Training</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECTS ══════════════════════════════════════════════ -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="sec-eyebrow">Work</p>
+      <h2 class="sec-heading">Engineering Projects</h2>
+      <p class="sec-lead">From real-time robotics to IoT safety systems — each project built to solve a real problem. More projects coming soon.</p>
+    </div>
+    <div class="projects-grid">
+
+      <div class="proj-card reveal reveal-delay-1">
+        <div class="proj-card-img">🤖</div>
+        <div class="proj-card-body">
+          <div class="proj-card-cat">Final Year Project · Robotics</div>
+          <div class="proj-card-title">Real-Time Object Detection & Retrieval Robot for Warehouse</div>
+          <div class="proj-card-desc">Autonomous robot using computer vision and embedded control for real-time object detection and retrieval in warehouse environments. Developed as Final Year Design Project at UET Lahore.</div>
+          <div class="proj-chips">
+            <span class="proj-chip">Computer Vision</span>
+            <span class="proj-chip">Embedded C</span>
+            <span class="proj-chip">STM32</span>
+            <span class="proj-chip">Robotics</span>
+          </div>
+          <div class="proj-card-footer">
+            <a href="https://github.com/abdulrehman-arshad" target="_blank" class="proj-link">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-2">
+        <div class="proj-card-img">⛑️</div>
+        <div class="proj-card-body">
+          <div class="proj-card-cat">IoT · Safety Systems</div>
+          <div class="proj-card-title">IoT-Based Mining Worker Safety Helmet</div>
+          <div class="proj-card-desc">Smart helmet integrating IoT sensors for real-time gas detection, hazard monitoring, and worker safety alerts in mining environments.</div>
+          <div class="proj-chips">
+            <span class="proj-chip">IoT</span>
+            <span class="proj-chip">Gas Sensors</span>
+            <span class="proj-chip">STM32</span>
+            <span class="proj-chip">Embedded C</span>
+          </div>
+          <div class="proj-card-footer">
+            <a href="https://github.com/abdulrehman-arshad" target="_blank" class="proj-link">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-3">
+        <div class="proj-card-img">💡</div>
+        <div class="proj-card-body">
+          <div class="proj-card-cat">Embedded Systems</div>
+          <div class="proj-card-title">Dancing LED Cube Using STM32</div>
+          <div class="proj-card-desc">3D LED matrix display controlled via STM32 microcontroller with custom animation sequences programmed in Assembly and C++.</div>
+          <div class="proj-chips">
+            <span class="proj-chip">STM32</span>
+            <span class="proj-chip">Assembly</span>
+            <span class="proj-chip">C++</span>
+            <span class="proj-chip">PCB Design</span>
+          </div>
+          <div class="proj-card-footer">
+            <a href="https://github.com/abdulrehman-arshad" target="_blank" class="proj-link">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-1">
+        <div class="proj-card-img">🔥</div>
+        <div class="proj-card-body">
+          <div class="proj-card-cat">Robotics · Automation</div>
+          <div class="proj-card-title">Firefighting Robotic Car</div>
+          <div class="proj-card-desc">Autonomous robot capable of detecting fire using sensors and activating extinguishing mechanisms without human intervention.</div>
+          <div class="proj-chips">
+            <span class="proj-chip">Arduino</span>
+            <span class="proj-chip">C++</span>
+            <span class="proj-chip">Sensors</span>
+            <span class="proj-chip">Proteus</span>
+          </div>
+          <div class="proj-card-footer">
+            <a href="https://github.com/abdulrehman-arshad" target="_blank" class="proj-link">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-2">
+        <div class="proj-card-img">🦯</div>
+        <div class="proj-card-body">
+          <div class="proj-card-cat">Assistive Technology · IoT</div>
+          <div class="proj-card-title">Blind Assistance Stick</div>
+          <div class="proj-card-desc">Smart navigation aid for visually impaired individuals using ultrasonic sensors and haptic/audio feedback for obstacle detection and avoidance.</div>
+          <div class="proj-chips">
+            <span class="proj-chip">Ultrasonic</span>
+            <span class="proj-chip">Embedded C</span>
+            <span class="proj-chip">Arduino</span>
+          </div>
+          <div class="proj-card-footer">
+            <a href="https://github.com/abdulrehman-arshad" target="_blank" class="proj-link">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-3">
+        <div class="proj-card-img">🏠</div>
+        <div class="proj-card-body">
+          <div class="proj-card-cat">IoT · Automation</div>
+          <div class="proj-card-title">Home Automation System</div>
+          <div class="proj-card-desc">Smart home control system for remote monitoring and control of household electrical appliances via IoT connectivity and mobile interface.</div>
+          <div class="proj-chips">
+            <span class="proj-chip">IoT</span>
+            <span class="proj-chip">Python</span>
+            <span class="proj-chip">Embedded C</span>
+          </div>
+          <div class="proj-card-footer">
+            <a href="https://github.com/abdulrehman-arshad" target="_blank" class="proj-link">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLACEHOLDER CARDS — ready for your future projects -->
+      <div class="proj-card placeholder reveal reveal-delay-1">
+        <div class="proj-card-img">＋</div>
+        <div class="proj-card-body">
+          <div class="proj-card-cat">Coming Soon</div>
+          <div class="proj-card-title">Your Next Project</div>
+          <div class="proj-card-desc">Add your project details here — title, description, technologies used, and GitHub link.</div>
+        </div>
+      </div>
+
+      <div class="proj-card placeholder reveal reveal-delay-2">
+        <div class="proj-card-img">＋</div>
+        <div class="proj-card-body">
+          <div class="proj-card-cat">Coming Soon</div>
+          <div class="proj-card-title">Your Next Project</div>
+          <div class="proj-card-desc">Add your project details here — title, description, technologies used, and GitHub link.</div>
+        </div>
+      </div>
+
+      <div class="proj-card placeholder reveal reveal-delay-3">
+        <div class="proj-card-img">＋</div>
+        <div class="proj-card-body">
+          <div class="proj-card-cat">Coming Soon</div>
+          <div class="proj-card-title">Your Next Project</div>
+          <div class="proj-card-desc">Add your project details here — title, description, technologies used, and GitHub link.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ════════════════════════════════════════════════ -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="sec-eyebrow">Expertise</p>
+      <h2 class="sec-heading">Technical Skills</h2>
+      <p class="sec-lead">A dual skill set spanning utility-scale solar operations and embedded systems development.</p>
+    </div>
+    <div class="skills-layout">
+      <div class="reveal reveal-delay-1">
+        <div class="skill-category">
+          <div class="skill-cat-title">Solar PV & Power Systems</div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-item-top"><span class="skill-item-name">Solar PV O&M</span><span class="skill-item-level">Hands-on</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span class="skill-item-name">Sun-Tracking Systems</span><span class="skill-item-level">Hands-on</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="88"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span class="skill-item-name">HV/LV Switchgear Operations</span><span class="skill-item-level">Hands-on</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="82"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span class="skill-item-name">Inverter Troubleshooting</span><span class="skill-item-level">Hands-on</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span class="skill-item-name">SCADA Monitoring</span><span class="skill-item-level">Exposure</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="55"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-title">Engineering Tools</div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-item-top"><span class="skill-item-name">AutoCAD (2D & 3D)</span><span class="skill-item-level">Advanced</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="92"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span class="skill-item-name">MATLAB</span><span class="skill-item-level">Intermediate</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="70"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span class="skill-item-name">Proteus / Multisim</span><span class="skill-item-level">Intermediate</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="75"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="skill-category">
+          <div class="skill-cat-title">Programming & Embedded</div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-item-top"><span class="skill-item-name">Python</span><span class="skill-item-level">Intermediate</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="72"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span class="skill-item-name">C++ / Embedded C</span><span class="skill-item-level">Intermediate</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="75"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span class="skill-item-name">Assembly Language</span><span class="skill-item-level">Intermediate</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="65"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span class="skill-item-name">STM32 / Arduino</span><span class="skill-item-level">Hands-on</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span class="skill-item-name">PCB Design & IoT</span><span class="skill-item-level">Intermediate</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="68"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-tags-section">
+          <div class="skill-tags-title">Other Skills</div>
+          <div class="skill-cloud">
+            <span class="skill-cloud-tag">PTW / LOTO</span>
+            <span class="skill-cloud-tag">Root Cause Analysis</span>
+            <span class="skill-cloud-tag">Plant Commissioning</span>
+            <span class="skill-cloud-tag">Preventive Maintenance</span>
+            <span class="skill-cloud-tag">Motor Winding</span>
+            <span class="skill-cloud-tag">Microsoft Office</span>
+            <span class="skill-cloud-tag">Technical Training</span>
+            <span class="skill-cloud-tag">Vendor Coordination</span>
+            <span class="skill-cloud-tag">Report Writing</span>
+            <span class="skill-cloud-tag">Team Leadership</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EDUCATION ═════════════════════════════════════════════ -->
+<section id="education">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="sec-eyebrow">Academic</p>
+      <h2 class="sec-heading">Education</h2>
+      <p class="sec-lead">Strong academic foundation built at some of Pakistan's leading technical institutions.</p>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal reveal-delay-1">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-degree">B.Sc Electrical Engineering</div>
+        <div class="edu-inst">UET Lahore – Narowal Campus</div>
+        <div class="edu-year">2020 – 2024</div>
+        <div class="edu-grade">CGPA: 3.54 / 4.00</div>
+        <div class="edu-note">Final Year Project: Real-Time Object Detection & Retrieval Robot for Warehouse. Key subjects: Power Systems, Electrical Machines, Control Systems, Embedded Systems, Electronics.</div>
+      </div>
+      <div class="edu-card reveal reveal-delay-2">
+        <div class="edu-icon">📐</div>
+        <div class="edu-degree">DAE Electrical Technology</div>
+        <div class="edu-inst">Govt. College of Technology Gujranwala</div>
+        <div class="edu-year">2017 – 2020</div>
+        <div class="edu-grade">Score: 92%</div>
+        <div class="edu-note">Exceptional performance in electrical technology — practical training in machines, wiring, circuits, and industrial applications.</div>
+      </div>
+      <div class="edu-card reveal reveal-delay-3">
+        <div class="edu-icon">📚</div>
+        <div class="edu-degree">Matriculation (Science)</div>
+        <div class="edu-inst">Al-Farabi Model High School Wazirabad</div>
+        <div class="edu-year">2011 – 2013</div>
+        <div class="edu-grade">Score: 78%</div>
+        <div class="edu-note">Science stream with Physics, Chemistry, and Mathematics as core subjects.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CERTIFICATIONS ═════════════════════════════════════════ -->
+<section id="certifications">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="sec-eyebrow">Recognition</p>
+      <h2 class="sec-heading">Certifications & Awards</h2>
+      <p class="sec-lead">Institutional recognition and technical certifications earned throughout academic and professional life.</p>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card reveal reveal-delay-1">
+        <div class="cert-icon">🏆</div>
+        <div>
+          <div class="cert-name">PEEF Scholar – Advanced Leadership Training</div>
+          <div class="cert-issuer">PBTE / YDC Murree</div>
+          <div class="cert-year">June 2021 · Competitively selected from high-achieving students for 3-day program at Youth Development Centre, Murree</div>
+        </div>
+      </div>
+      <div class="cert-card reveal reveal-delay-2">
+        <div class="cert-icon">📐</div>
+        <div>
+          <div class="cert-name">AutoCAD 2D & 3D Certification</div>
+          <div class="cert-issuer">Professional Certification</div>
+          <div class="cert-year">2016</div>
+        </div>
+      </div>
+      <div class="cert-card reveal reveal-delay-3">
+        <div class="cert-icon">⚡</div>
+        <div>
+          <div class="cert-name">Motor Winding Certification</div>
+          <div class="cert-issuer">Technical Certification</div>
+          <div class="cert-year">2016</div>
+        </div>
+      </div>
+      <div class="cert-card reveal reveal-delay-1">
+        <div class="cert-icon">🔧</div>
+        <div>
+          <div class="cert-name">Tool & Die Making</div>
+          <div class="cert-issuer">Technical Certification</div>
+          <div class="cert-year">2016</div>
+        </div>
+      </div>
+      <div class="cert-card reveal reveal-delay-2">
+        <div class="cert-icon">🈶</div>
+        <div>
+          <div class="cert-name">Chinese Language Course</div>
+          <div class="cert-issuer">Language Certification</div>
+          <div class="cert-year">2020</div>
+        </div>
+      </div>
+      <div class="cert-card placeholder reveal reveal-delay-3" style="border-style:dashed;border-color:var(--border);background:transparent">
+        <div class="cert-icon" style="background:var(--off2);color:var(--border)">＋</div>
+        <div>
+          <div class="cert-name" style="color:var(--light)">Add Future Certification</div>
+          <div class="cert-issuer" style="color:var(--border)">Your next course or certificate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXTRACURRICULAR ════════════════════════════════════════ -->
+<section id="extracurricular">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="sec-eyebrow">Beyond Work</p>
+      <h2 class="sec-heading">Extracurricular Activities</h2>
+      <p class="sec-lead">Leadership, competition, sports, and community — a well-rounded engineer.</p>
+    </div>
+    <div class="extra-grid">
+      <div class="extra-card reveal reveal-delay-1">
+        <div class="extra-icon">⚙️</div>
+        <div>
+          <div class="extra-title">IEEE Technical Head – UET Lahore Narowal Campus</div>
+          <div class="extra-desc">Served as Technical Head of the IEEE Student Branch, organizing technical workshops, engineering sessions, and coordinating with the national IEEE body to promote engineering excellence.</div>
+        </div>
+      </div>
+      <div class="extra-card reveal reveal-delay-2">
+        <div class="extra-icon">💻</div>
+        <div>
+          <div class="extra-title">Programming Competitions</div>
+          <div class="extra-desc">Actively participated in inter-departmental and university-level programming competitions, demonstrating problem-solving and competitive coding skills.</div>
+        </div>
+      </div>
+      <div class="extra-card reveal reveal-delay-3">
+        <div class="extra-icon">🏆</div>
+        <div>
+          <div class="extra-title">Project Expo Participant</div>
+          <div class="extra-desc">Presented embedded systems and IoT engineering projects at university-level Project Expos to faculty members and industry professionals.</div>
+        </div>
+      </div>
+      <div class="extra-card reveal reveal-delay-1">
+        <div class="extra-icon">🏸</div>
+        <div>
+          <div class="extra-title">Badminton – Departmental Representative</div>
+          <div class="extra-desc">Represented the Electrical Engineering Department as a badminton player in university-level sports competitions at UET Lahore, Narowal Campus.</div>
+        </div>
+      </div>
+      <div class="extra-card reveal reveal-delay-2">
+        <div class="extra-icon">🌱</div>
+        <div>
+          <div class="extra-title">Environmental Volunteer – Plantation Drives</div>
+          <div class="extra-desc">Participated in campus plantation drives at UET Lahore, reflecting a personal commitment to environmental sustainability — values that align directly with a career in renewable energy.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ════════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="contact-bg"></div>
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="sec-eyebrow">Let's Connect</p>
+      <h2 class="sec-heading">Get In Touch</h2>
+      <p class="sec-lead">Open to new opportunities in Electrical Engineering, Solar PV O&M, and Renewable Energy — in Pakistan and internationally.</p>
+    </div>
+    <div class="contact-layout">
+      <div class="contact-cards reveal reveal-delay-1">
+        <a href="mailto:abdulrehmanarshad246@gmail.com" class="contact-card">
+          <div class="contact-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></div>
+          <div><div class="contact-card-label">Email</div><div class="contact-card-val">abdulrehmanarshad246@gmail.com</div></div>
+        </a>
+        <a href="https://linkedin.com/in/abdulrehman-arshad" target="_blank" class="contact-card">
+          <div class="contact-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div><div class="contact-card-label">LinkedIn</div><div class="contact-card-val">linkedin.com/in/abdulrehman-arshad</div></div>
+        </a>
+        <a href="https://github.com/abdulrehman-arshad" target="_blank" class="contact-card">
+          <div class="contact-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
+          <div><div class="contact-card-label">GitHub</div><div class="contact-card-val">github.com/abdulrehman-arshad</div></div>
+        </a>
+        <a href="tel:+923227007187" class="contact-card">
+          <div class="contact-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18L6.5 2a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.5 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="contact-card-label">Phone</div><div class="contact-card-val">+92 322 700 7187</div></div>
+        </a>
+      </div>
+      <div class="contact-right reveal reveal-delay-2">
+        <div class="available-box">
+          <div class="available-title">Currently Open To</div>
+          <ul class="available-list">
+            <li>Solar PV O&M Engineering roles</li>
+            <li>Electrical Engineering positions</li>
+            <li>Renewable Energy projects</li>
+            <li>Embedded Systems development</li>
+            <li>Opportunities in Pakistan & internationally</li>
+            <li>Remote collaboration</li>
+          </ul>
+        </div>
+        <div style="margin-top:1.5rem">
+          <div class="available-title" style="color:rgba(255,255,255,0.4);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem">Languages</div>
+          <div class="lang-row">
+            <div class="lang-item" style="flex-direction:column;align-items:stretch">
+              <div style="display:flex;justify-content:space-between"><span class="lang-name">Urdu</span><span class="lang-level">Native</span></div>
+              <div class="lang-bar"><div class="lang-bar-fill" style="width:100%"></div></div>
+            </div>
+            <div class="lang-item" style="flex-direction:column;align-items:stretch;margin-top:0.75rem">
+              <div style="display:flex;justify-content:space-between"><span class="lang-name">English</span><span class="lang-level">Professional</span></div>
+              <div class="lang-bar"><div class="lang-bar-fill" style="width:75%"></div></div>
+            </div>
+            <div class="lang-item" style="flex-direction:column;align-items:stretch;margin-top:0.75rem">
+              <div style="display:flex;justify-content:space-between"><span class="lang-name">Chinese</span><span class="lang-level">Basic</span></div>
+              <div class="lang-bar"><div class="lang-bar-fill" style="width:25%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<footer>
+  <span>© 2026 Abdul Rehman Butt · Electrical Engineer · Wazirabad, Pakistan</span>
+  <div class="footer-links">
+    <a href="#splash">Back to top ↑</a>
+    <a href="https://linkedin.com/in/abdulrehman-arshad" target="_blank">LinkedIn</a>
+    <a href="https://github.com/abdulrehman-arshad" target="_blank">GitHub</a>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+  // Active nav link
+  const sections = document.querySelectorAll('section[id]');
+  let current = '';
+  sections.forEach(s => { if(window.scrollY >= s.offsetTop - 120) current = s.id; });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+// Skill bar animation
+const bars = document.querySelectorAll('.skill-bar-fill');
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.style.width = e.target.dataset.width + '%';
+      barObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+bars.forEach(b => barObserver.observe(b));
+</script>
+</body>
+</html>
